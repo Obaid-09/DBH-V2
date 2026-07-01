@@ -135,14 +135,11 @@ import React, { useEffect, useState } from 'react';
 import { FaBoxOpen } from 'react-icons/fa';
 import API from '../services/api';
 import { toast } from 'react-toastify';
-import OrderTimeline
-from "../Components/OrderTimeline/OrderTimeline";
 
 const MyOrders = () => {
 
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedOrder, setSelectedOrder] = useState(null);
 
     const fetchOrders = async () => {
 
@@ -344,44 +341,9 @@ const MyOrders = () => {
                                                 {order.orderStatus}
                                             </span>
 
-                                            <button
-                                                onClick={() => setSelectedOrder(order)}
-                                                className="border border-[#C9A227]
-                                                px-6 py-2 rounded-full text-[#C9A227]"
-                                            >
+                                            <button className='border border-[#C9A227] text-[#C9A227] px-6 py-3 rounded-full hover:bg-[#C9A227] hover:text-white transition-all'>
                                                 Track Order
                                             </button>
-
-                                            {
-                                                selectedOrder && (
-
-                                                    <div className="fixed inset-0 bg-black/50
-                                                    flex justify-center items-center z-50">
-
-                                                        <div className="bg-white rounded-xl p-8
-                                                        w-[500px] relative">
-
-                                                            <button
-                                                                onClick={() => setSelectedOrder(null)}
-                                                                className="absolute top-4 right-4
-                                                                text-2xl"
-                                                            >
-                                                                ×
-                                                            </button>
-
-                                                            <h2 className="text-3xl font-bold mb-6 text-center">
-                                                                Order Tracking
-                                                            </h2>
-
-                                                            <OrderTimeline
-                                                                status={selectedOrder.orderStatus}
-                                                            />
-
-                                                        </div>
-
-                                                    </div>
-                                                )
-                                            }
 
                                         </div>
 
